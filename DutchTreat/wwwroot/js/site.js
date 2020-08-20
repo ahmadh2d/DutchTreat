@@ -1,6 +1,6 @@
 ﻿$('document').ready(function () {
 	var contactForm = $(".contact-form").get(0);
-	contactForm.hidden = true;
+	//contactForm.hidden = true;
 
 	var buyButton = $("#buy-button");
 	//buyButton.on("click", function () {

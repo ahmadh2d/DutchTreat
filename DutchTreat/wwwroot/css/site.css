@@ -11,8 +11,18 @@ a:hover {
 	text-decoration: underline;
 }
 
+.contact-form {
+	background-color: #aaa;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+form.contact-form div {
+	margin: 0 0 10px;
+}
+
 .contact-form input, textarea, label {
-	display:block;
+	display: block;
 	font-size: 18px;
 	width: 200px;
 }
@@ -21,14 +31,6 @@ a:hover {
 	width: auto;
 	background-color: #00ff21;
 	color: #fff;
-}
-
-form div {
-	margin: 0 0 10px;
-}
-
-.contact-form {
-	background-color: #808080;
 }
 
 .product-prop-list li {
@@ -89,4 +91,8 @@ form div {
 #main-nav ul li {
 	float: left;
 	margin: 5px;
+}
+
+#footer {
+	padding: 20px 0 0;
 }

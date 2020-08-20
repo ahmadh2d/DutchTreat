@@ -1,6 +1,23 @@
-﻿<dl>
-	<dt>Email</dt>
-	<dd>abc@dutch.com</dd>
-	<dt>Phone</dt>
-	<dd>1234567</dd>
-</dl>
+﻿@{ 
+	ViewBag.Title = "Contact Us";
+}
+
+<form class="contact-form" method="post">
+	<div>
+		<label>Your Name:</label>
+		<input type="text" name="name" />
+	</div>
+	<div>
+		<label>Email:</label>
+		<input type="email" name="email" />
+	</div>
+	<div>
+		<label>Subject:</label>
+		<input type="text" name="subject" />
+	</div>
+	<div>
+		<label>Message:</label>
+		<textarea rows="4" name="message"></textarea>
+	</div>
+	<input type="submit" value="Send Message" />
+</form>
