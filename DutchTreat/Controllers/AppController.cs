@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DutchTreat.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,17 @@ namespace DutchTreat.Controllers
 		}
 
 		[HttpPost("contact")]
-		public IActionResult Contact(object model)
+		public IActionResult Contact(ContactModel model)
 		{
+			if (ModelState.IsValid)
+			{
+				// Send Email
+			}
+			else
+			{
+				// Show Error 
+			}
+
 			return View();
 		}
 
