@@ -1,4 +1,14 @@
-﻿body
+﻿footer#footer {
+	margin-bottom: 0;
+}
+
+menu#nav-menu {
+	margin: 0;
+}
+.login-toggle {
+	cursor: pointer;
+}
+/*body
 {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -96,3 +106,4 @@ form.contact-form div {
 #footer {
 	padding: 20px 0 0;
 }
+*/
