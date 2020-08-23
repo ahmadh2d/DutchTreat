@@ -32,23 +32,18 @@ namespace DutchTreat
 			}
 		}
 
-		private static void SeedDb(IHostBuilder host)
-		{
-			
-		}
-
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
 			Host.CreateDefaultBuilder(args)
-				.ConfigureAppConfiguration(SetupConfiguration)
+				//.ConfigureAppConfiguration(SetupConfiguration)
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
 				});
 
-		private static void SetupConfiguration(HostBuilderContext ctx, IConfigurationBuilder builder)
-		{
-			builder.AddJsonFile("config.json", false, true)
-				.AddEnvironmentVariables();
-		}
+		//private static void SetupConfiguration(HostBuilderContext ctx, IConfigurationBuilder builder)
+		//{
+		//	builder.AddJsonFile("config.json", false, true)
+		//		.AddEnvironmentVariables();
+		//}
 	}
 }

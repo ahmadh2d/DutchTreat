@@ -1,5 +1,0 @@
-{
-	"ConnectionStrings": {
-		"DutchConnectionString": "Server=localhost\\SQLEXPRESS;Database=DutchTreatDb;Integrated Security=true;MultipleActiveResultSets=true"
-	}
-}
