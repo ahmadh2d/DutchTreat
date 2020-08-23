@@ -33,6 +33,7 @@ namespace DutchTreat
 			services.AddDbContext<DutchContext>(cfg => {
 				cfg.UseSqlServer(config.GetConnectionString("DutchConnectionString"));
 			});
+			services.AddTransient<DutchSeeder>();
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
