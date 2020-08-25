@@ -7,10 +7,13 @@ using DutchTreat.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Newtonsoft.Json;
 
 namespace DutchTreat
 {
@@ -36,7 +39,10 @@ namespace DutchTreat
 			services.AddTransient<DutchSeeder>();
 			services.AddScoped<IDutchRepository, DutchRepository>();
 
-			services.AddControllersWithViews();
+			services.AddControllersWithViews()
+					.AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
+					.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
 			services.AddRazorPages();
 		}
 
