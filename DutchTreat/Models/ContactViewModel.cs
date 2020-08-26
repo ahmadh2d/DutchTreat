@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DutchTreat.Models
 {
-	public class ContactModel
+	public class ContactViewModel
 	{
 		[Required]
 		[MinLength(5)]

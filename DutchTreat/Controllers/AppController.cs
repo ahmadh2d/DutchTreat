@@ -37,7 +37,7 @@ namespace DutchTreat.Controllers
 		}
 
 		[HttpPost("contact")]
-		public IActionResult Contact(ContactModel model)
+		public IActionResult Contact(ContactViewModel model)
 		{
 			if (ModelState.IsValid)
 			{

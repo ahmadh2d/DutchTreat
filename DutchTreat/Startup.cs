@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Newtonsoft.Json;
+using AutoMapper;
+using System.Reflection;
 
 namespace DutchTreat
 {
@@ -32,6 +34,8 @@ namespace DutchTreat
 		{
 			services.AddTransient<IMailService, NullMailService>();
 			// Support for real mail service
+
+			services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 			services.AddDbContext<DutchContext>(cfg => {
 				cfg.UseSqlServer(config.GetConnectionString("DutchConnectionString"));

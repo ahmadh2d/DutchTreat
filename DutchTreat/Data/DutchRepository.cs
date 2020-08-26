@@ -27,7 +27,7 @@ namespace DutchTreat.Data
 				.ToList();
 		}
 
-		public Order GetOrder(int id)
+		public Order GetOrderById(int id)
 		{
 			return context.Orders
 				.Include(o => o.Items)
@@ -65,6 +65,11 @@ namespace DutchTreat.Data
 		public bool SaveAll()
 		{
 			return this.context.SaveChanges() > 0;
+		}
+
+		public void AddEntity(object model)
+		{
+			this.context.Add(model);
 		}
 	}
 }
