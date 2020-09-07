@@ -7,11 +7,14 @@ using AutoMapper;
 using DutchTreat.Data;
 using DutchTreat.Data.Entities;
 using DutchTreat.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace DutchTreat.Controllers
 {
+	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 	[Route("api/[Controller]")]
 	//[ApiController]
 	public class OrdersController : Controller
@@ -28,7 +31,7 @@ namespace DutchTreat.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult<IEnumerable<Order>> Get(bool includeItems=true)
+		public ActionResult<IEnumerable<Order>> Get(bool includeItems = true)
 		{
 			try
 			{
@@ -51,7 +54,7 @@ namespace DutchTreat.Controllers
 				if (order != null) return Ok(mapper.Map<Order, OrderViewModel>(order));
 				else return NotFound();
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				this.logger.LogError($"Failed to get order: {ex}");
 				return BadRequest("Failed to get order");
@@ -59,7 +62,7 @@ namespace DutchTreat.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Post([FromBody]OrderViewModel model)
+		public IActionResult Post([FromBody] OrderViewModel model)
 		{
 			try
 			{
@@ -70,7 +73,7 @@ namespace DutchTreat.Controllers
 					{
 						newOrder.OrderDate = DateTime.Now;
 					}
-					
+
 					this.repository.AddEntity(newOrder);
 
 					if (this.repository.SaveAll())

@@ -18,6 +18,8 @@ using AutoMapper;
 using System.Reflection;
 using DutchTreat.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace DutchTreat
 {
@@ -37,6 +39,18 @@ namespace DutchTreat
 			services.AddIdentity<UserShop, IdentityRole>(cfg => {
 				cfg.User.RequireUniqueEmail = true;
 			}).AddEntityFrameworkStores<DutchContext>();
+
+			services.AddAuthentication()
+				.AddCookie()
+				.AddJwtBearer(cfg =>
+				{
+					cfg.TokenValidationParameters = new TokenValidationParameters()
+					{
+						ValidIssuer = config["Tokens:Issuer"],
+						ValidAudience = config["Tokens:Audience"],
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Tokens:Key"]))
+					};
+				});
 
 			services.AddTransient<IMailService, NullMailService>();
 			// Support for real mail service
