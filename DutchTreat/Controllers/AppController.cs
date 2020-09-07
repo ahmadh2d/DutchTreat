@@ -1,5 +1,5 @@
 ﻿using DutchTreat.Data;
-using DutchTreat.Models;
+using DutchTreat.ViewModels;
 using DutchTreat.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

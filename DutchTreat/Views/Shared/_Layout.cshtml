@@ -29,6 +29,18 @@
 					<li class="nav-item">
 						<a asp-controller="App" asp-action="About" class="nav-link">About Us</a>
 					</li>
+					@if (!User.Identity.IsAuthenticated)
+					{
+						<li class="nav-item">
+							<a asp-controller="Account" asp-action="Login" class="nav-link">Login</a>
+						</li>
+					}
+					else
+					{
+						<li class="nav-item">
+							<a asp-controller="Account" asp-action="Logout" class="nav-link">Logout</a>
+						</li>
+					}
 				</ul>
 			</menu>
 		</nav>

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DutchTreat.Models
+namespace DutchTreat.ViewModels
 {
 	public class ContactViewModel
 	{

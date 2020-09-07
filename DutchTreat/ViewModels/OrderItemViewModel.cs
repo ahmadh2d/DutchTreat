@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DutchTreat.Models
+namespace DutchTreat.ViewModels
 {
 	public class OrderItemViewModel
 	{

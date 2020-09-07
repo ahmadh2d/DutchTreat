@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DutchTreat.Data.Entities;
-using DutchTreat.Models;
+using DutchTreat.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
