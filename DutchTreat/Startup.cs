@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Newtonsoft.Json;
 using AutoMapper;
 using System.Reflection;
+using DutchTreat.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace DutchTreat
 {
@@ -32,6 +34,10 @@ namespace DutchTreat
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddIdentity<UserShop, IdentityRole>(cfg => {
+				cfg.User.RequireUniqueEmail = true;
+			}).AddEntityFrameworkStores<DutchContext>();
+
 			services.AddTransient<IMailService, NullMailService>();
 			// Support for real mail service
 
@@ -66,7 +72,11 @@ namespace DutchTreat
 			app.UseStaticFiles();
 			app.UseNodeModules();
 
+			app.UseAuthentication();
+
 			app.UseRouting();
+
+			app.UseAuthorization();
 
 			app.UseEndpoints(cfg =>
 			{
