@@ -9,6 +9,7 @@ using DutchTreat.Data.Entities;
 using DutchTreat.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -22,12 +23,15 @@ namespace DutchTreat.Controllers
 		private readonly IDutchRepository repository;
 		private readonly ILogger<OrdersController> logger;
 		private readonly IMapper mapper;
+		private readonly UserManager<UserShop> userManager;
 
-		public OrdersController(IDutchRepository repository, ILogger<OrdersController> logger, IMapper mapper)
+		public OrdersController(IDutchRepository repository, ILogger<OrdersController> logger,
+			IMapper mapper, UserManager<UserShop> userManager)
 		{
 			this.repository = repository;
 			this.logger = logger;
 			this.mapper = mapper;
+			this.userManager = userManager;
 		}
 
 		[HttpGet]
@@ -35,7 +39,10 @@ namespace DutchTreat.Controllers
 		{
 			try
 			{
-				return Ok(mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(this.repository.GetAllOrders(includeItems)));
+				var username = User.Identity.Name;
+				var result = this.repository.GetAllOrdersByUser(username, includeItems);
+
+				return Ok(mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(result));
 			}
 			catch (Exception ex)
 			{
@@ -49,7 +56,8 @@ namespace DutchTreat.Controllers
 		{
 			try
 			{
-				var order = this.repository.GetOrderById(id);
+				var username = User.Identity.Name;
+				var order = this.repository.GetOrderById(username, id);
 
 				if (order != null) return Ok(mapper.Map<Order, OrderViewModel>(order));
 				else return NotFound();
@@ -62,7 +70,7 @@ namespace DutchTreat.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Post([FromBody] OrderViewModel model)
+		public async Task<IActionResult> Post([FromBody] OrderViewModel model)
 		{
 			try
 			{
@@ -74,11 +82,13 @@ namespace DutchTreat.Controllers
 						newOrder.OrderDate = DateTime.Now;
 					}
 
+					var currentUser = await userManager.FindByNameAsync(User.Identity.Name);
+					newOrder.User = currentUser;
+
 					this.repository.AddEntity(newOrder);
 
 					if (this.repository.SaveAll())
 					{
-
 						return Created($"/api/orders/{newOrder.Id}", this.mapper.Map<Order, OrderViewModel>(newOrder));
 					}
 				}
