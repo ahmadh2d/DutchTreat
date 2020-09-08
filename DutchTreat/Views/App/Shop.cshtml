@@ -2,23 +2,31 @@
 @{
 	ViewBag.Title = "Shop";
 }
+@section Scripts {
+	<script src="~/clientapp/runtime-es2015.js"></script>
+	<script src="~/clientapp/polyfills-es2015.js"></script>
+	<script src="~/clientapp/styles-es2015.js"></script>
+	<script src="~/clientapp/vendor-es2015.js"></script>
+	<script src="~/clientapp/main-es2015.js"></script>
+}
+<the-shop></the-shop>
 
-<p>Number of Products: @Model.Count()</p>
-<div class="row">
-	@foreach (var p in Model)
-	{
-		<div class="col-md-4">
-			<div class="border bg-light rounded p-1">
-				<img src="/img/@(p.ArtId).jpg" alt="@(p.Title)" class="img-fluid" />
-				<h3>@p.Category - @p.Size</h3>
-				<ul class="product-prop-list">
-					<li>Price: @p.Price</li>
-					<li>Artist: @p.Artist</li>
-					<li>Title: @p.Title</li>
-					<li>Description: @p.ArtDescription</li>
-				</ul>
-				<button class="btn btn-success">Buy</button>
+@*<p>Number of Products: @Model.Count()</p>
+	<div class="row">
+		@foreach (var p in Model)
+		{
+			<div class="col-md-4">
+				<div class="border bg-light rounded p-1">
+					<img src="/img/@(p.ArtId).jpg" alt="@(p.Title)" class="img-fluid" />
+					<h3>@p.Category - @p.Size</h3>
+					<ul class="product-prop-list">
+						<li>Price: @p.Price</li>
+						<li>Artist: @p.Artist</li>
+						<li>Title: @p.Title</li>
+						<li>Description: @p.ArtDescription</li>
+					</ul>
+					<button class="btn btn-success">Buy</button>
+				</div>
 			</div>
-		</div>
-	}
-</div>
+		}
+	</div>*@
