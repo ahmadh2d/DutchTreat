@@ -1,5 +1,19 @@
 ﻿<div class="row">
-	<ul>
+	<div class="product-info col-md-4" *ngFor="let p of products">
+		<div class="border bg-light rounded p-1 m-1">
+			<img src="/img/{{ p.artId }}.jpg" [alt]="p.title" class="img-fluid" />
+			<h4>{{ p.category }} - {{ p.size }}</h4>
+			<ul class="product-prop-list list-unstyled">
+				<li><strong>Price:</strong> {{ p.price | currency:"USD" }}</li>
+				<li><strong>Artist:</strong> {{ p.artist }}</li>
+				<li><strong>Title:</strong> {{ p.title }}</li>
+				<li><strong>Description:</strong> {{ p.artDescription }}</li>
+			</ul>
+			<button id="buy-button" class="btn btn-success pull-right" (click)="addProduct(p)">Buy</button>
+		</div>
+	</div>
+
+	<!--<ul>
 		<li *ngFor="let p of products">{{ p.title }} : {{ p.price | currency:"USD" }}</li>
-	</ul>
+	</ul>-->
 </div>

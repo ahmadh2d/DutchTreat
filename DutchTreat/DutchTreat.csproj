@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\shared\Product.ts" />
     <None Remove="ClientApp\app\shop\productList.component.ts" />
+    <None Remove="DataService.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\shared\Product.ts" />
     <TypeScriptCompile Include="ClientApp\app\shop\productList.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\DataService.ts" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

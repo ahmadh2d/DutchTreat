@@ -1,0 +1,15 @@
+﻿.product-info > div {
+	overflow: hidden;
+}
+.product-info img {
+	max-width: 100px;
+	overflow:hidden;
+	float: left;
+	margin: 0 5px 0 0px;
+	border: 1px solid #000;
+}
+
+.product-info h4 {
+	font-size: large;
+	font-weight: bold;
+}
