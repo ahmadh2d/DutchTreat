@@ -7,7 +7,7 @@ let AppComponent = class AppComponent {
 };
 AppComponent = __decorate([
     Component({
-        selector: 'the-shop',
+        selector: 'app-root',
         templateUrl: "./app.component.html",
         styles: []
     })

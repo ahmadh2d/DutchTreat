@@ -12,11 +12,15 @@ let ProductList = class ProductList {
                 this.products = this.data.products;
         });
     }
+    addProduct(product) {
+        this.data.addToOrder(product);
+    }
 };
 ProductList = __decorate([
     Component({
         selector: "product-list",
-        templateUrl: "productList.component.html"
+        templateUrl: "productList.component.html",
+        styleUrls: ["productList.component.css"]
     })
 ], ProductList);
 export { ProductList };
